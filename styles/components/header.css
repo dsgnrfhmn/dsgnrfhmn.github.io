@@ -1,28 +1,75 @@
-/* Page header: name with the theme toggle on the same line, role, intro, contact links. */
-.header__row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
+/*
+  Page header: name with the theme toggle on the same line, the role under
+  it, contact links below. Pinned to the top while the page scrolls. Over the
+  first stretch of scroll, in step with it (scripts/header.js sets --shrink
+  from 0 at the top of the page to 1), the name scales down, the role slides
+  up behind the name and fades, the links move up into its place, and the
+  space above the name narrows. Once the page is scrolled at all
+  (.is-stuck) a hairline separates the header from the content underneath.
+*/
+/*
+  The header gets shorter as it shrinks. Scroll anchoring would answer that
+  by scrolling back up, fighting the scroll that drives it; turn it off.
+*/
+html { overflow-anchor: none; }
+
+.header {
+  --shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  padding: calc(var(--space-6) - (var(--space-6) - var(--space-3)) * var(--shrink)) 0 var(--space-3);
+  background-color: var(--color-bg);
+  transition:
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
 }
 
+.header.is-stuck { box-shadow: 0 var(--divider-width) 0 var(--color-divider); }
+
+/* Above the role, which slides up behind it. */
+.header__row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  background-color: var(--color-bg);
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+/*
+  From the title size down to the section heading size. Scaled with a
+  transform rather than font-size: no relayout on every scroll frame, and
+  older Chromium builds (QtWebEngine) stop painting text whose font-size
+  changes continuously. The row's height is set by the 40px theme toggle,
+  so the scale moves nothing around it.
+*/
 .header__name {
   font-size: var(--font-size-title);
   line-height: var(--line-height-heading);
+  transform: scale(calc(1 - (1 - var(--title-scale-min)) * var(--shrink)));
+  transform-origin: left center;
 }
 
-.header__role { margin-top: var(--space-2); }
-
-/* Same light-but-readable weight as the project summaries; full column width, like the divider. */
-.header__intro {
-  margin-top: var(--space-4);
+/*
+  The role is one line, 1.2em tall. It travels its own height plus the gap
+  above it, which hides it under the 40px row; the links rise by the role's
+  height plus their own gap, ending one --space-2 under the row.
+*/
+/* Same style as the intro below (light color, book weight). */
+.header__role {
+  margin-top: var(--space-2);
   font-weight: var(--font-weight-book);
+  line-height: var(--line-height-heading);
+  transform: translateY(calc((1.2em + var(--space-2)) * -1 * var(--shrink)));
+  opacity: calc(1 - var(--shrink));
 }
 
-/* A larger gap below sets the header apart from the work sections. */
 .header__links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1) var(--space-4);
-  margin: var(--space-4) 0 var(--header-gap);
+  margin-top: calc(var(--space-3) - (1.2em + var(--space-3)) * var(--shrink));
 }

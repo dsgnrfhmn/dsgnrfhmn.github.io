@@ -1,5 +1,5 @@
 /* Hairline between the header and the work sections; the only rule on the page.
-   It sits in the middle: --header-gap above (header.css) and below (here). */
+   It sits in the middle: --header-gap above (about.css) and below (here). */
 .divider {
   height: var(--divider-width);
   border: 0;

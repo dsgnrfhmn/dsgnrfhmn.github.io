@@ -1,0 +1,78 @@
+/*
+  Theme toggle: one icon that is a sun in the light theme and a moon in the
+  dark one. The moon is the sun's disc with a circle masked out of it; the
+  beams rotate away as it turns. Gray (white in the dark theme), 40px hit area around a 24px icon,
+  the icon's right edge on the column edge.
+*/
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--space-6);
+  height: var(--space-6);
+  margin-right: calc((var(--space-6) - var(--icon-size)) / -2);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-icon);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.theme-toggle:focus-visible {
+  outline: var(--divider-width) solid currentColor;
+  outline-offset: calc(var(--space-1) * -1);
+}
+
+.theme-toggle__icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  overflow: visible;
+}
+
+.theme-toggle__sun,
+.theme-toggle__moon,
+.theme-toggle__beams {
+  transform-origin: center;
+}
+
+/* Light: the sun, coming back with a small overshoot. */
+.theme-toggle__sun {
+  transition: transform var(--duration-slow) var(--ease-overshoot);
+}
+
+.theme-toggle__beams {
+  transition:
+    transform var(--duration-slow) var(--ease-overshoot),
+    opacity var(--duration-slow) var(--ease-out);
+}
+
+.theme-toggle__moon {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+/* Dark: the disc grows, the beams turn away and fade, the mask slides in to cut the crescent. */
+[data-theme="dark"] .theme-toggle__sun {
+  transform: scale(1.75);
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-out);
+}
+
+[data-theme="dark"] .theme-toggle__beams {
+  opacity: 0;
+  transform: rotate(-25deg);
+  transition-duration: var(--duration-fast);
+}
+
+[data-theme="dark"] .theme-toggle__moon {
+  transform: translateX(-7px);
+  transition-delay: var(--duration-fast);
+}
+
+/* On hover and keyboard focus it takes the link color, like the links beside it. */
+.theme-toggle:focus-visible { color: var(--color-link); }
+
+@media (hover: hover) {
+  .theme-toggle:hover { color: var(--color-link); }
+}

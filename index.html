@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="scripts/vendor/lenis-1.3.26/lenis.css" />
   <link rel="stylesheet" href="styles/index.css" />
   <script>
     // Set the theme before first paint: saved choice, else the system setting. See scripts/theme.js.
@@ -22,20 +23,41 @@
 <body>
 <main class="page">
 
-  <header class="header">
+  <header class="header" data-header>
     <div class="header__row">
       <h1 class="header__name">Valentyn Panasiuk</h1>
-      <button class="link" type="button" data-theme-toggle aria-pressed="false">Dark</button>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme">
+        <svg class="theme-toggle__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <mask id="theme-toggle-moon">
+            <rect x="0" y="0" width="24" height="24" fill="white" />
+            <circle class="theme-toggle__moon" cx="24" cy="10" r="6" fill="black" />
+          </mask>
+          <circle class="theme-toggle__sun" cx="12" cy="12" r="6" mask="url(#theme-toggle-moon)" fill="currentColor" />
+          <g class="theme-toggle__beams" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </g>
+        </svg>
+      </button>
     </div>
     <p class="header__role text-light">Product Designer · Berlin</p>
-    <p class="header__intro text-light">Seven years in product design: B2B SaaS, CRMs, mobile apps. The last two years I spent building and running my own infrastructure and AI-agent environment, so I now design technical tools as someone who configures, debugs and operates them every day.</p>
     <nav class="header__links" aria-label="Contact">
-        <a class="link" href="mailto:vlnt.pns@gmail.com">Email</a>
-        <a class="link" href="https://www.linkedin.com/in/valentyn-panasiuk-630398115/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="link" href="https://github.com/dsgnrfhmn" target="_blank" rel="noopener">GitHub</a>
-        <a class="link" href="cv.pdf">CV (PDF)</a>
+      <a class="link" href="mailto:vlnt.pns@gmail.com">Email</a>
+      <a class="link" href="https://www.linkedin.com/in/valentyn-panasiuk-630398115/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="link" href="https://github.com/dsgnrfhmn" target="_blank" rel="noopener">GitHub</a>
+      <a class="link" href="cv.pdf">CV (PDF)</a>
     </nav>
   </header>
+
+  <div class="about">
+    <p class="about__intro text-light">Seven years in product design: B2B SaaS, CRMs, mobile apps. The last two years I spent building and running my own infrastructure and AI-agent environment, so I now design technical tools as someone who configures, debugs and operates them every day.</p>
+  </div>
 
   <hr class="divider" />
 
@@ -150,5 +172,7 @@
 </main>
 
 <script type="module" src="scripts/theme.js"></script>
+<script type="module" src="scripts/header.js"></script>
+<script type="module" src="scripts/smooth-scroll.js"></script>
 </body>
 </html>

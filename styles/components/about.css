@@ -1,0 +1,8 @@
+/* Intro under the header; it scrolls away while the header stays. */
+.about { margin-bottom: var(--header-gap); }
+
+/* Same light-but-readable weight as the project summaries; full column width, like the divider. */
+.about__intro {
+  margin-top: var(--space-4);
+  font-weight: var(--font-weight-book);
+}

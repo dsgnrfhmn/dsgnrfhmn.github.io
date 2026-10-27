@@ -11,6 +11,8 @@
 @import './components/text.css';
 @import './components/link.css';
 @import './components/header.css';
+@import './components/theme-toggle.css';
+@import './components/about.css';
 @import './components/divider.css';
 @import './components/work.css';
 @import './components/project.css';
