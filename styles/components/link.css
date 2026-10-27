@@ -1,0 +1,32 @@
+/*
+  Inline text link: accent color, no underline at rest. On hover or keyboard
+  focus an underline draws in from left to right; on leave it slides out to
+  the right. Drawn with a background gradient so it can animate and wrap
+  across lines.
+*/
+.link {
+  color: var(--color-link);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 0% var(--link-underline-width);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-size var(--duration-base) var(--ease-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  background-position: left bottom;
+  background-size: 100% var(--link-underline-width);
+}
+
+/* A <button> styled as a link (e.g. the theme toggle). */
+button.link {
+  border: 0;
+  padding: 0;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}

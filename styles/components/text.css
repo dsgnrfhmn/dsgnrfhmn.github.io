@@ -1,0 +1,5 @@
+/* Secondary text: light weight, used for descriptions and body lists. */
+.text-light {
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-light);
+}

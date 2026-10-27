@@ -1,0 +1,28 @@
+/* Page header: name with the theme toggle on the same line, role, intro, contact links. */
+.header__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.header__name {
+  font-size: var(--font-size-title);
+  line-height: var(--line-height-heading);
+}
+
+.header__role { margin-top: var(--space-2); }
+
+/* Same light-but-readable weight as the project summaries; full column width, like the divider. */
+.header__intro {
+  margin-top: var(--space-4);
+  font-weight: var(--font-weight-book);
+}
+
+/* A larger gap below sets the header apart from the work sections. */
+.header__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: var(--space-4) 0 var(--header-gap);
+}

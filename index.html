@@ -1,156 +1,154 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valentyn Panasiuk — Product Designer</title>
-  <meta name="description" content="Product designer in Berlin. B2B SaaS, design systems, tools for technical users. Builds and runs his own infrastructure.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="dis-system/tokens/output.css">
-  <link rel="stylesheet" href="dis-system/components/text-button/style.css">
-  <link rel="stylesheet" href="dis-system/components/tag/style.css">
-  <link rel="stylesheet" href="dis-system/components/divider/style.css">
-  <link rel="stylesheet" href="site.css">
+  <meta name="description" content="Product designer in Berlin. B2B SaaS, design systems, tools for technical users. Builds and runs his own infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/index.css" />
   <script>
-    // Theme before first paint: stored choice, else the OS setting.
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('ds-theme'); } catch (e) {}
-      if (!t && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
-      if (t) document.documentElement.dataset.theme = t;
+    // Set the theme before first paint: saved choice, else the system setting. See scripts/theme.js.
+    (() => {
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch {}
+      const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     })();
   </script>
 </head>
 <body>
 <main class="page">
 
-  <header class="head">
-    <div class="head__row">
-      <h1 class="head__name">Valentyn Panasiuk</h1>
-      <button type="button" class="ds-text-button" id="theme" data-priority="secondary" data-status="active" data-underline="dotted">Dark theme</button>
+  <header class="header">
+    <div class="header__row">
+      <h1 class="header__name">Valentyn Panasiuk</h1>
+      <button class="link" type="button" data-theme-toggle aria-pressed="false">Dark</button>
     </div>
-    <p class="head__role">Product Designer · Berlin</p>
-    <p class="head__intro">
-      Seven years in product design: B2B SaaS, CRMs, mobile apps. The last two years I spent
-      building and running my own infrastructure and AI-agent environment, so I now design
-      technical tools as someone who configures, debugs and operates them every day.
-    </p>
-    <nav class="head__links" aria-label="Contact">
-      <a class="ds-text-button" data-priority="secondary" data-status="active" data-underline="solid" href="mailto:vlnt.pns@gmail.com">Email</a>
-      <a class="ds-text-button" data-priority="secondary" data-status="active" data-underline="solid" href="https://www.linkedin.com/in/valentyn-panasiuk-630398115/">LinkedIn</a>
-      <a class="ds-text-button" data-priority="secondary" data-status="active" data-underline="solid" href="https://github.com/dsgnrfhmn">GitHub</a>
-      <a class="ds-text-button" data-priority="secondary" data-status="active" data-underline="solid" href="cv.pdf">CV (PDF)</a>
+    <p class="header__role text-light">Product Designer · Berlin</p>
+    <p class="header__intro text-light">Seven years in product design: B2B SaaS, CRMs, mobile apps. The last two years I spent building and running my own infrastructure and AI-agent environment, so I now design technical tools as someone who configures, debugs and operates them every day.</p>
+    <nav class="header__links" aria-label="Contact">
+        <a class="link" href="mailto:vlnt.pns@gmail.com">Email</a>
+        <a class="link" href="https://www.linkedin.com/in/valentyn-panasiuk-630398115/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="https://github.com/dsgnrfhmn" target="_blank" rel="noopener">GitHub</a>
+        <a class="link" href="cv.pdf">CV (PDF)</a>
     </nav>
   </header>
 
-  <hr class="ds-divider" role="separator">
+  <hr class="divider" />
 
-  <section class="work" aria-labelledby="h-now">
-    <h2 class="work__title" id="h-now">Independent work, 2024 –</h2>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://github.com/dsgnrfhmn/arta">arta</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">dashboard UX</span>
-        <span class="ds-tag" data-type="neutral" data-subtype="passive">design system</span>
-      </div>
-      <p class="case__text">A dashboard that helps an artist run her practice: residencies, grants, portfolio, sold-work records. Designed on dis-system; the design system is wired into the developer agent as a git repo, so what ships is what was designed. Demo data.</p>
-    </article>
+    <section class="work" aria-labelledby="h-now">
+      <h2 class="work__title" id="h-now">Independent work, 2024 – present</h2>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://github.com/dsgnrfhmn/dis-system">dis-system</a></h3>
-        <span class="ds-tag" data-type="neutral" data-subtype="passive">design system</span>
-        <span class="ds-tag" data-type="neutral" data-subtype="passive">vanilla CSS</span>
-      </div>
-      <p class="case__text">A framework-free design system: tokens, components, light and dark theme, no build step. Rational brutalism: every visual choice has a functional reason, written in each component's metadata. This page is built on it.</p>
-    </article>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/arta/01-1280.webp" srcset="media/arta/01-1280.webp 1280w, media/arta/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://github.com/dsgnrfhmn/arta" target="_blank" rel="noopener">arta</a></h3>
+          <p class="project__tags text-light">dashboard UX · design system</p>
+        </div>
+        <p class="project__summary text-light">A dashboard that helps an artist run her practice: residencies, grants, portfolio, sold-work records. Designed on dis-system; the design system is wired into the developer agent as a git repo, so what ships is what was designed. Demo data.</p>
+      </article>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://github.com/dsgnrfhmn/multi-vlan-lab-opnsense-vyos">Multi-VLAN lab</a></h3>
-        <span class="ds-tag" data-type="accent-3" data-subtype="passive">infrastructure</span>
-      </div>
-      <p class="case__text">A segmented network on Proxmox: OPNsense for routing, firewall and DHCP/DNS, VyOS for VLAN switching, five VLANs over an 802.1Q trunk, default-deny policy. Troubleshooting cases written up as symptom → root cause → fix → verification.</p>
-    </article>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/dis-system/01-1280.webp" srcset="media/dis-system/01-1280.webp 1280w, media/dis-system/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="640" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://github.com/dsgnrfhmn/dis-system" target="_blank" rel="noopener">dis-system</a></h3>
+          <p class="project__tags text-light">design system · vanilla CSS</p>
+        </div>
+        <p class="project__summary text-light">A framework-free design system: tokens, components, light and dark theme, no build step. Rational brutalism: every visual choice has a functional reason, written in each component's metadata.</p>
+      </article>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://github.com/dsgnrfhmn/wort">Wort</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">product</span>
-        <span class="ds-tag" data-type="accent-3" data-subtype="passive">self-hosted</span>
-      </div>
-      <p class="case__text">A German-learning tool I use daily: a terminal translator that grew into a web app with a word list, per-word scores and exercises. Runs on a Raspberry Pi.</p>
-    </article>
-  </section>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/vlan-lab/01-1280.webp" srcset="media/vlan-lab/01-1280.webp 1280w, media/vlan-lab/01-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://github.com/dsgnrfhmn/multi-vlan-lab-opnsense-vyos" target="_blank" rel="noopener">Multi-VLAN lab</a></h3>
+          <p class="project__tags text-light">infrastructure</p>
+        </div>
+        <p class="project__summary text-light">A segmented network on Proxmox: OPNsense for routing, firewall and DHCP/DNS, VyOS for VLAN switching, five VLANs over an 802.1Q trunk, default-deny policy. Troubleshooting cases written up as symptom → root cause → fix → verification.</p>
+      </article>
 
-  <hr class="ds-divider" role="separator">
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/wort/01-1280.webp" srcset="media/wort/01-1280.webp 1280w, media/wort/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="628" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://github.com/dsgnrfhmn/wort" target="_blank" rel="noopener">Wort</a></h3>
+          <p class="project__tags text-light">product · self-hosted</p>
+        </div>
+        <p class="project__summary text-light">A German-learning tool I use daily: a terminal translator that grew into a web app with a word list, per-word scores and exercises. Runs on a Raspberry Pi.</p>
+      </article>
+    </section>
 
-  <section class="work" aria-labelledby="h-design">
-    <h2 class="work__title" id="h-design">Product design, 2016 – 2024</h2>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://www.dropbox.com/scl/fi/dyuysg1zs2znjufbjn6oe/BetterMe-Calorie-Tracker.paper?rlkey=ywbweek2ncrlcoi4gp1nwqz18&dl=0">BetterMe · Calorie tracker</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">mobile</span>
-        <span class="ds-tag" data-type="success" data-subtype="passive">+35% engagement</span>
-      </div>
-      <p class="case__text">Core feature of a health &amp; fitness app. Research → hypotheses → usability tests → A/B test before rollout. Engagement up 35%, with an effect on retention.</p>
-    </article>
+    <section class="work" aria-labelledby="h-design">
+      <h2 class="work__title" id="h-design">Product design, 2016 – 2024</h2>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://www.dropbox.com/scl/fi/qgsulmr91t12zxql9d9mv/BetterMe-Meals.paper?rlkey=pb5fbidip36oclbw0pv8g6xy6&dl=0">BetterMe · Meal plans</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">mobile</span>
-      </div>
-      <p class="case__text">Meal-plan flow and dashboard for the same app, designed in Agile sprints with iOS developers, analysts and product owners.</p>
-    </article>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/betterme-calorie-tracker/01-1280.webp" srcset="media/betterme-calorie-tracker/01-1280.webp 1280w, media/betterme-calorie-tracker/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="604" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://www.dropbox.com/scl/fi/dyuysg1zs2znjufbjn6oe/BetterMe-Calorie-Tracker.paper?rlkey=ywbweek2ncrlcoi4gp1nwqz18&amp;dl=0" target="_blank" rel="noopener">BetterMe · Calorie tracker</a></h3>
+          <p class="project__tags text-light">mobile · +35% engagement</p>
+        </div>
+        <p class="project__summary text-light">Core feature of a health &amp; fitness app. Research → hypotheses → usability tests → A/B test before rollout. Engagement up 35%, with an effect on retention.</p>
+      </article>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://www.dropbox.com/scl/fi/y86srigglwjnrh1vzcpo8/Essay-Pro-Enterprise-Web-Platform.paper?rlkey=b9s70897ipx09a9zn1nazskgn&dl=0">Essay Pro · Enterprise platform</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">B2B</span>
-        <span class="ds-tag" data-type="success" data-subtype="passive">25% faster</span>
-      </div>
-      <p class="case__text">A web platform with three user roles: writer, client, support agent. One consistent interface per role, a design system, and a support-agent flow that processes requests 25% faster.</p>
-    </article>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/betterme-meals/01-1280.webp" srcset="media/betterme-meals/01-1280.webp 1280w, media/betterme-meals/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="604" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://www.dropbox.com/scl/fi/qgsulmr91t12zxql9d9mv/BetterMe-Meals.paper?rlkey=pb5fbidip36oclbw0pv8g6xy6&amp;dl=0" target="_blank" rel="noopener">BetterMe · Meal plans</a></h3>
+          <p class="project__tags text-light">mobile</p>
+        </div>
+        <p class="project__summary text-light">Meal-plan flow and dashboard for the same app, designed in Agile sprints with iOS developers, analysts and product owners.</p>
+      </article>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://www.dropbox.com/scl/fi/mcmgi12nty5jzzboml414/Cross-Platform-Blockchain-Product.paper?rlkey=s2r0rqrl6fklxgc2s8nv3exyw&dl=0">Essentia · Cross-platform blockchain product</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">web · mobile · desktop</span>
-      </div>
-      <p class="case__text">Android, iOS, web and desktop. Led a team of three designers; usability testing with ~100 crypto enthusiasts via Telegram; the product launched via ICO.</p>
-    </article>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/essay-pro/01-1280.webp" srcset="media/essay-pro/01-1280.webp 1280w, media/essay-pro/01.jpg 1920w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://www.dropbox.com/scl/fi/y86srigglwjnrh1vzcpo8/Essay-Pro-Enterprise-Web-Platform.paper?rlkey=b9s70897ipx09a9zn1nazskgn&amp;dl=0" target="_blank" rel="noopener">Essay Pro · Enterprise platform</a></h3>
+          <p class="project__tags text-light">B2B · 25% faster</p>
+        </div>
+        <p class="project__summary text-light">A web platform with three user roles: writer, client, support agent. One consistent interface per role, a design system, and a support-agent flow that processes requests 25% faster.</p>
+      </article>
 
-    <article class="case">
-      <div class="case__head">
-        <h3 class="case__name"><a class="ds-text-button" data-priority="primary" data-status="active" data-underline="solid" href="https://www.dropbox.com/scl/fi/gq2na3lxq8moeopu4c2y7/Sendios-Multi-Channel-Communication-Platform.paper?dl=0">Sendios · Multi-channel communication platform</a></h3>
-        <span class="ds-tag" data-type="accent-1" data-subtype="passive">B2B SaaS</span>
-        <span class="ds-tag" data-type="success" data-subtype="passive">4.2 → 7.3 satisfaction</span>
-      </div>
-      <p class="case__text">UX audit of the whole product, 16 interviews with B2B clients, redesign of segmentation and campaign creation, and a design system aligned with the developers' components. User satisfaction rose from 4.2 to 7.3 out of 10.</p>
-    </article>
-  </section>
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/blockchain/01-1280.webp" srcset="media/blockchain/01-1280.webp 1280w, media/blockchain/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="527" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://www.dropbox.com/scl/fi/mcmgi12nty5jzzboml414/Cross-Platform-Blockchain-Product.paper?rlkey=s2r0rqrl6fklxgc2s8nv3exyw&amp;dl=0" target="_blank" rel="noopener">Essentia · Cross-platform blockchain product</a></h3>
+          <p class="project__tags text-light">web · mobile · desktop</p>
+        </div>
+        <p class="project__summary text-light">Android, iOS, web and desktop. Led a team of three designers; usability testing with ~100 crypto enthusiasts via Telegram; the product launched via ICO.</p>
+      </article>
+
+      <article class="project">
+        <figure class="project__preview">
+          <img src="media/sendios/01-1280.webp" srcset="media/sendios/01-1280.webp 1280w, media/sendios/01-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 760px" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </figure>
+        <div class="project__head">
+          <h3 class="project__name"><a class="link" href="https://www.dropbox.com/scl/fi/gq2na3lxq8moeopu4c2y7/Sendios-Multi-Channel-Communication-Platform.paper?rlkey=ibax9rxkazjvg1dkptb939zvp&amp;dl=0" target="_blank" rel="noopener">Sendios · Multi-channel communication platform</a></h3>
+          <p class="project__tags text-light">B2B SaaS · 4.2 → 7.3 satisfaction</p>
+        </div>
+        <p class="project__summary text-light">UX audit of the whole product, 16 interviews with B2B clients, redesign of segmentation and campaign creation, and a design system aligned with the developers' components. User satisfaction rose from 4.2 to 7.3 out of 10.</p>
+      </article>
+    </section>
 </main>
 
-<script src="dis-system/components/text-button/component.js"></script>
-<script src="dis-system/components/tag/component.js"></script>
-<script>
-  // Theme toggle: the label names the current theme, as in dis-system's nav-bar.
-  (function () {
-    var b = document.getElementById('theme');
-    function label() { b.querySelector('.ds-text-button__text, .ds-text-button__label') ? (b.querySelector('.ds-text-button__text, .ds-text-button__label').textContent = cur() === 'dark' ? 'Dark theme' : 'Light theme') : (b.textContent = cur() === 'dark' ? 'Dark theme' : 'Light theme'); }
-    function cur() { return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'; }
-    b.addEventListener('click', function () {
-      var next = cur() === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      try { localStorage.setItem('ds-theme', next); } catch (e) {}
-      label();
-    });
-    label();
-  })();
-</script>
+<script type="module" src="scripts/theme.js"></script>
 </body>
 </html>

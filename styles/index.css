@@ -1,0 +1,16 @@
+/*
+  Entry point: tokens first, then base, layout and components.
+  Look (color, type, links, motion) comes from the website repo: base, text
+  and link are copied unchanged from its src/styles/. Layout (single column,
+  header, divider, project blocks) follows the previous version of this page.
+*/
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+
+@import './components/text.css';
+@import './components/link.css';
+@import './components/header.css';
+@import './components/divider.css';
+@import './components/work.css';
+@import './components/project.css';

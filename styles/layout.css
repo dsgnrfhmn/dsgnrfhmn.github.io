@@ -1,0 +1,6 @@
+/* Page shell: one centered column, as in the previous version of this page. */
+.page {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: var(--space-6) var(--page-pad-x);
+}

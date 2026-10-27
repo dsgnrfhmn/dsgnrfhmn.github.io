@@ -1,0 +1,9 @@
+/* Hairline between the header and the work sections; the only rule on the page.
+   It sits in the middle: --header-gap above (header.css) and below (here). */
+.divider {
+  height: var(--divider-width);
+  border: 0;
+  background-color: var(--color-divider);
+}
+
+.divider + .work { padding-top: var(--header-gap); }

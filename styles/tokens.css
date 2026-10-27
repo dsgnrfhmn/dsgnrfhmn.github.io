@@ -1,0 +1,81 @@
+/*
+  Design tokens: the single place for every color, type, spacing and motion
+  value. Components read only these variables.
+
+  Color, type, spacing scale, link and motion are taken from the website repo
+  (src/styles/tokens.css). The layout tokens below follow the previous version
+  of this page, rounded to the nearest step of this scale.
+
+  Breakpoint, repeated literally in the files (custom properties can't go in @media):
+    --bp-mobile: 640px  (narrower side padding)
+*/
+:root {
+  /* Color */
+  --color-bg: #fff;
+  --color-text: #271e09;
+  --color-text-light: #000;
+  --color-text-muted: #666; /* project summaries; 5.7:1 on white, enough for thin italic */
+  --color-link: #17008b;
+  --color-divider: #d9d9d9;
+  color-scheme: light;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  /* 18px up to a 2500px-wide viewport, then grows in proportion to it
+     (0.72vw = 18px at 2500px), so text keeps its size on 5K-class screens. */
+  --font-size-body: max(18px, 0.72vw);
+  /* Headings follow the same rule: fixed up to 2500px, then grow with the viewport. */
+  --font-size-title: max(32px, 1.28vw); /* page title (name); as on the previous version of this page */
+  --font-size-heading: max(24px, 0.96vw); /* section titles, a step below the name */
+  --line-height-heading: 1.2;
+  --font-weight-regular: 400;
+  --font-weight-light: 200;
+  --font-weight-book: 300; /* longer light text (project summaries): 200 is too thin to read in paragraphs */
+  --line-height-body: normal;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 80px;
+  --space-8: 120px;
+  --space-9: 200px;
+
+  /* Layout */
+  --page-w: 72ch;
+  --page-pad-x: var(--space-4);
+  --summary-w: 64ch;
+  --project-gap: calc(var(--space-5) * 2); /* 64px */
+  --divider-width: 1px;
+  --header-gap: calc(var(--space-6) + var(--space-3)); /* 56px, both above and below the divider */
+  --work-gap: var(--space-7); /* between the work sections: more than between projects */
+
+  /* Link */
+  --link-underline-width: 1px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-base: 0.35s;
+}
+
+/*
+  Dark theme: monochrome except links, set by data-theme="dark" on <html>
+  (see scripts/theme.js). Links keep the light theme's blue hue (250°),
+  lightened to 6.8:1 contrast on black; #17008b itself would be 1.4:1.
+*/
+:root[data-theme="dark"] {
+  --color-bg: #000;
+  --color-text: #fff;
+  --color-text-light: #fff;
+  --color-text-muted: #999; /* 7.4:1 on black */
+  --color-link: #9580ff;
+  --color-divider: #262626;
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  :root { --page-pad-x: var(--space-3); }
+}

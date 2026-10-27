@@ -1,0 +1,50 @@
+/*
+  Project block: preview image on top, then name with tags, then summary.
+  The whole block is the link's target: the link's ::after stretches over it,
+  and hovering anywhere draws the underline (see link.css), like the website's
+  project rows. Names are lowercase, as there.
+*/
+.project {
+  position: relative;
+}
+
+.project + .project { margin-top: var(--project-gap); }
+
+.project__preview { margin-bottom: var(--space-3); }
+
+.project__preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+}
+
+.project__name { text-transform: lowercase; }
+
+.project__tags { font-weight: var(--font-weight-book); }
+
+.project__summary {
+  margin-top: var(--space-2);
+  font-weight: var(--font-weight-book);
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: var(--summary-w);
+}
+
+.project .link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.project:hover .link {
+  background-position: left bottom;
+  background-size: 100% var(--link-underline-width);
+}

@@ -1,0 +1,11 @@
+/* A titled run of projects (Independent work, Product design). */
+.work { padding: var(--space-5) 0; }
+
+/* No rule between sections: the extra space alone separates them. */
+.work + .work { margin-top: var(--work-gap); }
+
+.work__title {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-heading);
+}
